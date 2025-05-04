@@ -17,6 +17,9 @@ dotenv.config();
 
 const port = process.env.SERVER_PORT || 5000;
 
+app.use('/', (req, res) => {
+    res.status(200).json({ message: 'Welcome to the server!' });
+});
 app.use('/auth', authRoutes);
 app.use('/api/historic-places', historicPlacesRoutes);
 
