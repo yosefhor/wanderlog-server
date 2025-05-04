@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ['http://127.0.0.1:3000', 'http://localhost:3000'],
+    origin: [process.env.CLIENT_URL1, process.env.CLIENT_URL2, process.env.CLIENT_URL_RENDER],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
