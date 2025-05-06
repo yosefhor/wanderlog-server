@@ -3,23 +3,32 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 import historicPlacesRoutes from './routes/historicPlacesRoutes.js';
+
 const app = express();
-app.use(express.json());
-app.use(cookieParser());
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://wanderlog-client.onrender.com',
+];
 app.use(cors({
-    origin: [process.env.CLIENT_URL1, process.env.CLIENT_URL2, process.env.CLIENT_URL_RENDER],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 }));
+app.use(express.json());
+app.use(cookieParser());
 import dotenv from 'dotenv';
 dotenv.config();
 
 const port = process.env.SERVER_PORT || 5000;
 
-app.use('/', (req, res) => {
-    res.status(200).json({ message: 'Welcome to the server!' });
-});
 app.use('/auth', authRoutes);
 app.use('/api/historic-places', historicPlacesRoutes);
 
@@ -31,4 +40,5 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
     console.log(`the app is listening on port: ${port}`);
+    console.log('CLIENT_URL_RENDER:', process.env.CLIENT_URL_RENDER);//check if the env variable is set correctly
 })
