@@ -25,14 +25,14 @@ export const development = {
 
 export const production = {
   client: 'postgresql',
-  // connection: process.env.DATABASE_URL,
-  connection: {
-    host: process.env.DATABASE_URL,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-  },
+  connection: process.env.DB_HOST,
+  // connection: {
+  //   host: process.env.DATABASE_URL,
+  //   port: process.env.DB_PORT,
+  //   database: process.env.DB_NAME,
+  //   user: process.env.DB_USER,
+  //   password: process.env.DB_PASSWORD,
+  // },
   pool: {
     min: 2,
     max: 10
