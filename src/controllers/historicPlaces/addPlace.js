@@ -1,8 +1,5 @@
-import knex from 'knex';
-import { development } from '../../../knexfile.js';
+import db from '../../../db.js';
 import { getCityImages } from '../../middlewares/getCityImage.js';
-
-const db = knex(development);
 
 export async function addPlace(req, res, next) {
     try {

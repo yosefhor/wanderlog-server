@@ -1,9 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { checkUser } from '../../middlewares/checkUser.js';
-import { development } from '../../../knexfile.js';
-import knex from 'knex';
-
-const db = knex(development);
+import db from '../../../db.js';
 
 function createError(message, status) {
     const error = new Error(message);

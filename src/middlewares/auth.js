@@ -1,14 +1,11 @@
 import bcrypt from 'bcryptjs';
-import { development } from '../../knexfile.js';
-import knex from 'knex';
 import env from "dotenv";
 import jwt from "jsonwebtoken";
 import { checkUser } from "../middlewares/checkUser.js";
+import db from '../../db.js';
 
 env.config();
 const secret_key = process.env.SECRET_KEY;
-
-const db = knex(development);
 
 function createError(message, status) {
     const error = new Error(message);

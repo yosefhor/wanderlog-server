@@ -1,7 +1,4 @@
-import knex from 'knex';
-import { development } from '../../../knexfile.js';
-
-const db = knex(development);
+import db from '../../../db.js';
 
 export async function deletePlace(req, res, next) {
     try {

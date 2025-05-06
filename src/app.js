@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 import historicPlacesRoutes from './routes/historicPlacesRoutes.js';
+import db from '../db.js';
 
 const app = express();
 const allowedOrigins = [

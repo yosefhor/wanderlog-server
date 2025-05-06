@@ -1,8 +1,5 @@
 import { checkPassword, deleteRefrehToken, validateAccessToken } from "../../middlewares/auth.js";
-import { development } from '../../../knexfile.js';
-import knex from 'knex';
-
-const db = knex(development);
+import db from '../../../db.js';
 
 export async function deleteAccount(user, accessToken, res) {
     let { username, password } = user;

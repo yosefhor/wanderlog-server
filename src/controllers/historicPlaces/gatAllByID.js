@@ -1,8 +1,5 @@
-import { development } from '../../../knexfile.js';
-import knex from 'knex';
+import db from '../../../db.js';
 import { getCityImages } from '../../middlewares/getCityImage.js';
-
-const db = knex(development);
 
 export async function getAllByID(req, res, next) {
     try {

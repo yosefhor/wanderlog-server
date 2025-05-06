@@ -1,7 +1,4 @@
-import { development } from '../../knexfile.js';
-import knex from 'knex';
-
-const db = knex(development);
+import db from '../../db.js';
 
 export async function checkUser({ username, userID }) {
     const searchColumn = username ? 'username' : 'id';

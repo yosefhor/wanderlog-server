@@ -1,9 +1,6 @@
 import { checkPassword, validateAccessToken } from "../../middlewares/auth.js";
-import { development } from '../../../knexfile.js';
-import knex from 'knex';
 import bcrypt from 'bcryptjs';
-
-const db = knex(development);
+import db from '../../../db.js';
 
 export async function changePassword(user, accessToken, res) {
     let { username, oldPassword, newPassword } = user;
