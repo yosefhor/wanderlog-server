@@ -35,8 +35,10 @@ export function generateAccessToken(res, userID, username) {
         const accessToken = jwt.sign({ userID, username }, secret_key, { expiresIn: '1h' });
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            // secure: process.env.NODE_ENV === 'production',
+            // sameSite: 'lax',
+            secure: true,
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60,
         })
         return true;
@@ -53,8 +55,10 @@ export async function generateRefreshToken(res, userID, username) {
         res.cookie('refreshToken', refreshToken, {
             path: '/auth/refreshtoken',
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            // secure: process.env.NODE_ENV === 'production',
+            // sameSite: 'lax',
+            secure: true,
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24 * 7,
         })
         return true;
