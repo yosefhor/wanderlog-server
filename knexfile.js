@@ -26,6 +26,7 @@ export const development = {
 export const production = {
   client: 'postgresql',
   // connection: process.env.DATABASE_URL,
+  
   connection: {
     host: process.env.DATABASE_URL,
     port: process.env.DB_PORT,
