@@ -40,5 +40,4 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
     console.log(`the app is listening on port: ${port}`);
-    console.log('CLIENT_URL_RENDER:', process.env.CLIENT_URL_RENDER);//check if the env variable is set correctly
 })
