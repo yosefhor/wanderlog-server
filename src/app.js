@@ -30,10 +30,16 @@ dotenv.config();
 
 const port = process.env.SERVER_PORT || 5000;
 
+// to keep Render.com server alive
+app.get("/api/ping", (req, res) => {
+    res.status(200).send("pong");
+});
+
 app.use('/auth', authRoutes);
 app.use('/api/historic-places', historicPlacesRoutes);
 
 app.use((err, req, res, next) => {
+    console.log('Status:', err.status, 'Error:', err.message);
     res.status(err.status || 500).json({
         statusText: err.message || 'Internal Server Error',
     });
