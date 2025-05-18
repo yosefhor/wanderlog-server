@@ -1,8 +1,8 @@
 import express from 'express';
-import { addPlace } from '../controllers/historicPlaces/addPlace.js';
-import { updatePlace } from '../controllers/historicPlaces/updatePlace.js';
-import { getAllByID } from '../controllers/historicPlaces/gatAllByID.js';
-import { deletePlace } from '../controllers/historicPlaces/deletePlace.js';
+import { addTrip } from '../controllers/upcomingTrips/addTrip.js';
+import { updateTrip } from '../controllers/upcomingTrips/updateTrip.js';
+import { getAllByID } from '../controllers/upcomingTrips/gatAllByID.js';
+import { deleteTrip } from '../controllers/upcomingTrips/deleteTrip.js';
 import { validateAccessToken } from '../middlewares/auth.js';
 
 const router = express.Router();
@@ -23,15 +23,15 @@ router.get('/get-all-by-id', async (req, res, next) => {
 })
 
 router.post('/add', async (req, res, next) => {
-    await addPlace(req, res, next);
+    await addTrip(req, res, next);
 })
 
 router.put('/update', async (req, res, next) => {
-    await updatePlace(req, res, next);
+    await updateTrip(req, res, next);
 })
 
 router.delete('/delete', async (req, res, next) => {
-    await deletePlace(req, res, next);
+    await deleteTrip(req, res, next);
 })
 
 export default router;

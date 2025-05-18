@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
-import historicPlacesRoutes from './routes/historicPlacesRoutes.js';
+import historicTripsRoutes from './routes/historicTripsRoutes.js';
+import upcomingTripsRoutes from './routes/upcomingTripsRoutes.js';
 import db from '../db.js';
 
 const app = express();
@@ -36,7 +37,8 @@ app.get("/api/ping", (req, res) => {
 });
 
 app.use('/auth', authRoutes);
-app.use('/api/historic-places', historicPlacesRoutes);
+app.use('/api/historic-trips', historicTripsRoutes);
+app.use('/api/upcoming-trips', upcomingTripsRoutes);
 
 app.use((err, req, res, next) => {
     console.log('Status:', err.status, 'Error:', err.message);

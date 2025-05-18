@@ -1,9 +1,9 @@
 import db from '../../../db.js';
 import { getCityImages } from '../../middlewares/getCityImage.js';
 
-export async function addPlace(req, res, next) {
+export async function addTrip(req, res, next) {
     try {
-        const addedPlace = await db('historic_places').insert({
+        const addedTrip = await db('historic_trips').insert({
             'city': req.body.city,
             'country': req.body.country,
             'description': req.body.description,
@@ -14,9 +14,9 @@ export async function addPlace(req, res, next) {
             'user_id': req.userID,
         })
             .returning('*');
-        const images = await getCityImages(addedPlace.city);
-        const addedPlaceWithImages = { ...addedPlace[0], images };
-        res.status(200).json({ addedPlaceWithImages: addedPlaceWithImages, message: 'added successfully' });
+        const images = await getCityImages(addedTrip.city);
+        const addedTripWithImages = { ...addedTrip[0], images };
+        res.status(200).json({ addedTripWithImages: addedTripWithImages, message: 'added successfully' });
     } catch (error) {
         next(error);
     }
