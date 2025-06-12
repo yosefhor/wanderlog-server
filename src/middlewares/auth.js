@@ -70,7 +70,7 @@ export function validateAccessToken(accessToken) {
     try {
         return jwt.verify(accessToken, secret_key);
     } catch (error) {
-        throw createError(401, "Authentication failed, try login again");
+        throw createError(401, "Authentication failed, please login");
     }
 }
 
