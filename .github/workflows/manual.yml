@@ -20,10 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./server
+        working-directory: server
 
       - name: Run migrations
-        working-directory: ./server
+        working-directory: server
         env:
           NODE_ENV: production
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
