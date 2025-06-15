@@ -27,4 +27,4 @@ jobs:
         env:
           NODE_ENV: production
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: npx --no-install knex migrate:latest --env production
+        run: node ./node_modules/knex/bin/cli.js migrate:latest --env production
