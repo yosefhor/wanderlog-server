@@ -6,7 +6,7 @@ dotenv.config({
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
-export const development = {
+const development = {
   client: 'pg',
   connection: {
     host: process.env.DB_HOST,
@@ -24,7 +24,7 @@ export const development = {
   }
 };
 
-export const production = {
+const production = {
   client: 'pg',
   connection: {
     host: process.env.HOST,
@@ -42,4 +42,9 @@ export const production = {
   migrations: {
     tableName: 'knex_migrations'
   }
+};
+
+export default {
+  development,
+  production
 };
