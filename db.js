@@ -1,11 +1,11 @@
 import knex from 'knex';
 import dotenv from 'dotenv';
+import knexConfig from './knexfile.js';
+
 dotenv.config();
 
-import { development, production } from './knexfile.js';
-
 const environment = process.env.NODE_ENV || 'development';
-const config = environment === 'production' ? production : development;
+const config = knexConfig[environment];
 
 const db = knex(config);
 
